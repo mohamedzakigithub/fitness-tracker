@@ -1,13 +1,18 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const WorkoutSchema = new Schema({
-  day: {
-    type: Number,
-    default: new Date(),
+const WorkoutSchema = new Schema(
+  {
+    day: {
+      type: Number,
+      default: new Date(),
+    },
+    exercises: Array,
   },
-  exercises: Array,
-});
+  {
+    versionKey: false,
+  }
+);
 
 WorkoutSchema.virtual("totalDuration").get(function () {
   let totalDuration = 0;
